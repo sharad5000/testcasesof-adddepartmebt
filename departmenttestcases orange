@@ -1,0 +1,1133 @@
+import time
+
+from selenium.webdriver import Keys
+from selenium.webdriver.common.by import By
+
+
+class TestLogin:
+    #submit the form with valid position
+    def test_001(self, false=None):
+        from selenium import webdriver
+        import time
+        driver = webdriver.Chrome()
+        driver.get("https://testing.wenodo.com/")
+        driver.maximize_window()
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(3)
+        time.sleep(3)
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(3)
+        driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+
+
+        # 2nd page position information (submit the form
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "ugh")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(5)
+
+        if 'Add Position' in driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[1]/templateurl[1]/div[1]/h5[1]").text:
+            assert True
+        else:
+            assert false
+        driver.quit()
+
+
+#without position title
+    def test_002(self):
+        from selenium import webdriver
+        import time
+        driver = webdriver.Chrome()
+        driver.get("https://testing.wenodo.com/")
+        driver.maximize_window()
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(10)
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(5)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    #submit the form without department name
+
+
+
+
+    def test_003(self):
+        from selenium import webdriver
+        import time
+        driver = webdriver.Chrome()
+        driver.get("https://testing.wenodo.com/")
+        driver.maximize_window()
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(5)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "accer")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+
+#submit the form without reporting position
+
+    def test_004(self):
+        from selenium import webdriver
+        import time
+        driver = webdriver.Chrome()
+        driver.get("https://testing.wenodo.com/")
+        driver.maximize_window()
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(5)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "it and inovation")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    # def test_005(self):
+    #     from selenium import webdriver
+    #
+    #     driver = webdriver.Chrome()
+    #     driver.maximize_window()
+    #     driver.get("https://testing.wenodo.com/")
+    #     driver.find_element(By.XPATH,
+    #                         "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+    #         "mubashir@gmail.com")
+    #     driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+    #     driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+    #     driver.implicitly_wait(5)
+    #     # click on human Resource
+    #     # click on human Resource
+    #     driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+    #     driver.implicitly_wait(5)
+    #     # click on add position detail
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+    #
+    #     time.sleep(3)
+    #     driver.implicitly_wait(2)
+    #
+    #     # 2nd page position information
+    #
+    #     # *position tittle
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+    #         "it and inovation")
+    #
+    #     # *department name
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+    #         "it and inovation")
+    #
+    #     # reporting position
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+    #         "hr manager")
+    #
+    #     # job description
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+    #         "management")
+    #     time.sleep(10)
+    #     for i in range(5):
+    #         driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+    #     time.sleep(5)
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+    #     time.sleep(10)
+    #
+    #
+    #
+    #
+    #     if 'Error! Position already exist' in driver.find_element(By.XPATH,
+    #                                                                                                 "/html[1]/body[1]/div[7]/div[1]/div[1]/h2[1]").text:
+    #
+    #         assert True
+    #     else:
+    #         assert False
+    #     driver.quit()
+
+# every time you have to fill new position detail
+
+
+
+
+
+
+
+
+
+
+
+
+#employment detail fill all the mandatory filed
+    def test_006(self):
+        from selenium import webdriver
+
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://testing.wenodo.com/")
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(5)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "qaa123 automation team")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(10)
+        # cost center code
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+            "it")
+        # loction
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        time.sleep(3)
+        # branch
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        # category
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+            "regular")
+        time.sleep(10)
+        # subcategory
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+            "full time")
+        # manger position
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        # admin position
+        # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(10)
+
+        # save and conitnue
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+        time.sleep(5)
+
+        if 'Add Position' in driver.find_element(By.XPATH,
+                                                 "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[1]/templateurl[1]/div[1]/h5[1]").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+
+
+
+#leave the cost center code and submit the form
+    def test_007(self):
+        from selenium import webdriver
+
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://testing.wenodo.com/")
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(5)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "ioni11team")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(10)
+        # cost center code
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+            "")
+        # loction
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        time.sleep(3)
+        # branch
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        # category
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+            "regular")
+        time.sleep(10)
+        # subcategory
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+            "full time")
+        # manger position
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        # admin position
+        # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(10)
+
+        # save and conitnue
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    #leave location
+    def test_008(self):
+        from selenium import webdriver
+
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://testing.wenodo.com/")
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(3)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "ono13 team")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(10)
+        # cost center code
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+            "it")
+        # loction
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+            "")
+
+        time.sleep(3)
+        # branch
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        # category
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+            "regular")
+        time.sleep(10)
+        # subcategory
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+            "full time")
+        # manger position
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        # admin position
+        # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(10)
+
+        # save and conitnue
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    #leave branch
+    def test_009(self):
+        from selenium import webdriver
+
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://testing.wenodo.com/")
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(3)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "action team019")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(10)
+        # cost center code
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+            "it")
+        # loction
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        time.sleep(3)
+        # branch
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+            "")
+
+        # category
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+            "regular")
+        time.sleep(10)
+        # subcategory
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+            "full time")
+        # manger position
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        # admin position
+        # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(10)
+
+        # save and conitnue
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    #leave category
+
+    def test_010(self):
+        from selenium import webdriver
+
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://testing.wenodo.com/")
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(10)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            " team0025")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(10)
+        # cost center code
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+            "it")
+        # loction
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        time.sleep(3)
+        # branch
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        # category
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+            "")
+        time.sleep(10)
+        # subcategory
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+            "full time")
+        # manger position
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        # admin position
+        # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(10)
+
+        # save and conitnue
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    # leave subcategory
+
+    def test_011(self):
+        from selenium import webdriver
+
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://testing.wenodo.com/")
+        driver.find_element(By.XPATH,
+                            "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+            "mubashir@gmail.com")
+        driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+        driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+        driver.implicitly_wait(5)
+        # click on human Resource
+        # click on human Resource
+        driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+        driver.implicitly_wait(3)
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+        driver.implicitly_wait(5)
+        # click on add position detail
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+
+        time.sleep(3)
+        driver.implicitly_wait(2)
+
+        # 2nd page position information
+
+        # *position tittle
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+            "ddemo13")
+
+        # *department name
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+            "it and inovation")
+
+        # reporting position
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+            "hr manager")
+
+        # job description
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+            "management")
+        time.sleep(10)
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(5)
+        driver.find_element(By.XPATH,
+                            "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+        time.sleep(10)
+        # cost center code
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+            "it")
+        # loction
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        time.sleep(3)
+        # branch
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+            "london")
+
+        # category
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+            "regular")
+        time.sleep(10)
+        # subcategory
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+            "")
+        # manger position
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        # admin position
+        # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+        for i in range(5):
+            driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+        time.sleep(10)
+
+        # save and conitnue
+        driver.find_element(By.XPATH,
+                            "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+        time.sleep(5)
+
+        if ' Please provide the mandatory details to submit(marked in red).' in driver.find_element(By.XPATH,
+                                                                                                    "//span[@class='help-block errormessageline']").text:
+
+            assert True
+        else:
+            assert False
+        driver.quit()
+
+    # def test_012(self):
+    #     from selenium import webdriver
+    #
+    #     driver = webdriver.Chrome()
+    #     driver.maximize_window()
+    #     driver.get("https://testing.wenodo.com/")
+    #     driver.find_element(By.XPATH,
+    #                         "//div[@class='input-group mb-2']//input[@placeholder='E-mail Address']").send_keys(
+    #         "mubashir@gmail.com")
+    #     driver.find_element(By.XPATH, "//input[@id='password']").send_keys("demo123")
+    #     driver.find_element(By.XPATH, "//login[@ng-show='LOGIN_FLAG']//button[@id='submit']").click()
+    #     driver.implicitly_wait(5)
+    #     # click on human Resource
+    #     # click on human Resource
+    #     driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div/div[2]/div[2]/div[2]/a/span").click()
+    #     driver.implicitly_wait(3)
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/button[1]").click()
+    #     driver.implicitly_wait(5)
+    #     # click on add position detail
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/a[2]").click()
+    #
+    #     time.sleep(3)
+    #     driver.implicitly_wait(2)
+    #
+    #     # 2nd page position information
+    #
+    #     # *position tittle
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[1]/div/div/input").send_keys(
+    #         " report bug team")
+    #
+    #     # *department name
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[2]/div/div/select").send_keys(
+    #         "it and inovation")
+    #
+    #     # reporting position
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[3]/div/div/select").send_keys(
+    #         "hr manager")
+    #
+    #     # job description
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[1]/templateurl/div[1]/div[2]/div[4]/div/div/textarea").send_keys(
+    #         "management")
+    #     time.sleep(10)
+    #     for i in range(5):
+    #         driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+    #     time.sleep(5)
+    #     driver.find_element(By.XPATH,
+    #                         "/html/body/div[3]/div/section/div/ng-view/div[1]/form/div[6]/div/button[1]").click()
+    #     time.sleep(10)
+    #     # cost center code
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[1]/div[1]/div[1]/select[1]").send_keys(
+    #         "it")
+    #     # loction
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[2]/div[1]/div[1]/select[1]").send_keys(
+    #         "london")
+    #
+    #     time.sleep(3)
+    #     # branch
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[3]/div[1]/div[1]/select[1]").send_keys(
+    #         "london")
+    #
+    #     # category
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[4]/div[1]/div[1]/select[1]").send_keys(
+    #         "regular")
+    #     time.sleep(10)
+    #     # subcategory
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[5]/div[1]/div[1]/select[1]").send_keys(
+    #         "full time")
+    #     # manger position
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[1]/div[2]/div[6]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+    #     # admin position
+    #     # driver.find_element(By.XPATH, "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[2]/templateurl[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/label[1]").click()
+    #     for i in range(5):
+    #         driver.find_element(By.XPATH, "/html").send_keys(Keys.PAGE_DOWN)
+    #     time.sleep(10)
+    #
+    #     # save and conitnue
+    #     driver.find_element(By.XPATH,
+    #                         "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[5]/div[1]/button[2]").click()
+    #     time.sleep(20)
+    #
+    #
+    #     #contract detail
+    #     #work pattern
+    #     driver.find_element(By.XPATH, "//select[@name='FIELD_NAME29000']").send_keys("i")
+    #     driver.implicitly_wait(5)
+    #     #weekly hour
+    #     driver.find_element(By.XPATH, "//input[@placeholder='Enter Weekly Hours...']").send_keys("48")
+    #     driver.implicitly_wait(5)
+    #     #no of shifts
+    #     driver.find_element(By.XPATH, "//input[@placeholder='Enter No of Shifts Per Week...']").send_keys("5")
+    #     driver.implicitly_wait(5)
+    #     #contract type
+    #
+    #     driver.find_element(By.XPATH, "//select[@name='FIELD_NAME6403']").send_keys("r")
+    #     #probation period
+    #     driver.implicitly_wait(5)
+    #     driver.find_element(By.XPATH, "//select[@name='FIELD_NAME6504']").send_keys("30")
+    #     #fte select automatically
+    #     driver.implicitly_wait(5)
+    #     #overtimeeligiblity
+    #     driver.find_element(BY.XPATH, "//body[1]/div[4]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/templateurl[1]/div[1]/div[2]/div[7]/div[1]/div[1]/select[2]").send_keys("yes")
+    #     #holiday entilement
+    #     driver.find_element(BY.XPATH, "//body[1]/div[4]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/templateurl[1]/div[1]/div[2]/div[8]/div[1]/div[1]/select[2]").send_keys("yes")
+    #     #tronc entillement
+    #     driver.find_element(BY.XPATH, "//body[1]/div[4]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[2]/div[1]/form[1]/div[1]/div[1]/templateurl[1]/div[1]/div[2]/div[9]/div[1]/div[1]/select[2]").send_keys("yes")
+    #     time.sleep(10)
+    #     #save and continue
+    #     driver.find_element(By.XPATH, "//button[normalize-space()='Save & add employee']").click()
+    #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # if 'Add Position' in driver.find_element(By.XPATH,
+        #                                          "/html[1]/body[1]/div[3]/div[1]/section[1]/div[1]/ng-view[1]/div[1]/div[1]/templateurl[1]/div[1]/h5[1]").text:
+        #
+        #     assert True
+        # else:
+        #     assert False
+        # driver.quit()
+        #
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
